@@ -1,0 +1,5 @@
+.test {
+    a: url(/a/c/d.html);
+    b: url('/a/c/d.html');
+    c: url("/a/c/d.html");
+}

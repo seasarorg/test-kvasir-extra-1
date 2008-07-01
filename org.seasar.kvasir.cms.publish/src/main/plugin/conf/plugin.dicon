@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container 2.4//EN"
+  "http://www.seasar.org/dtd/components24.dtd">
+<components>
+  <meta name="expand">"ymir-application.dicon"</meta>
+  <component name="plugin"
+    class="org.seasar.kvasir.cms.publish.impl.PublishPluginImpl" />
+  <component name="publishApplication"
+    class="org.seasar.kvasir.cms.ymir.impl.ApplicationImpl" />
+
+  <!-- PATH MAPPINGS -->
+  <!-- manageプラグインのPathMappingに合わせておくのが無難。 -->
+  <component class="org.seasar.cms.ymir.impl.PathMappingProviderImpl">
+    <property name="pathMappings">
+      container.findLocalComponents(@org.seasar.cms.ymir.PathMapping@class)
+    </property>
+  </component>
+  <component class="org.seasar.cms.ymir.impl.PathMappingImpl">
+    <arg>"^$"</arg>
+    <arg>"_RootPage"</arg>
+    <arg>"do_execute"</arg>
+    <arg>""</arg>
+    <arg>null</arg>
+    <arg>null</arg>
+  </component>
+  <component class="org.seasar.cms.ymir.impl.PathMappingImpl">
+    <arg>"([^/]+)-([^/]+)\\.([^/]+)\\.do($|/)"</arg>
+    <arg>"${1}${2u}Page"</arg>
+    <arg>"do_${3}"</arg>
+    <arg>"${4}${'}"</arg>
+    <arg>null</arg>
+    <arg>null</arg>
+  </component>
+  <component class="org.seasar.cms.ymir.impl.PathMappingImpl">
+    <arg>"([^/]+)-([^/]+)\\.do($|/)"</arg>
+    <arg>"${1}${2u}Page"</arg>
+    <arg>"do_execute"</arg>
+    <arg>"${3}${'}"</arg>
+    <arg>null</arg>
+    <arg>null</arg>
+  </component>
+  <component class="org.seasar.cms.ymir.impl.PathMappingImpl">
+    <arg>"([^/]+)\\.([^/]+)\\.do($|/)"</arg>
+    <arg>"${1}Page"</arg>
+    <arg>"do_${2}"</arg>
+    <arg>"${3}${'}"</arg>
+    <arg>null</arg>
+    <arg>null</arg>
+  </component>
+  <component class="org.seasar.cms.ymir.impl.PathMappingImpl">
+    <arg>"([^/]+)\\.do($|/)"</arg>
+    <arg>"${1}Page"</arg>
+    <arg>"do_execute"</arg>
+    <arg>"${2}${'}"</arg>
+    <arg>null</arg>
+    <arg>null</arg>
+  </component>
+
+  <!-- TAB -->
+  <component name="publishTab"
+    class="org.seasar.kvasir.cms.manage.tab.impl.PageTab" />
+</components>

@@ -1,0 +1,2 @@
+tab.publish.display-name=公開
+app.error.publishPage.failure=公開データの生成に失敗しました：{0}
